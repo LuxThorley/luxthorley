@@ -1,0 +1,52 @@
+/* OmniArchitect SSR-CRA Ω-1.0-Sovereign — Lattice Visual System */
+:root {
+  --cyan: #00e5ff;
+  --gold: #ffd700;
+  --void: #0a0e17;
+  --panel: rgba(10, 18, 32, 0.85);
+  --text: #e8f4ff;
+  --warn: #ffb74d;
+  --ok: #69f0ae;
+  --err: #ff5252;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; background: var(--void); color: var(--text); font-family: "Segoe UI", system-ui, sans-serif; overflow: hidden; }
+#app { display: flex; height: 100%; }
+#visual { flex: 1.4; position: relative; }
+#sidebar { width: 380px; background: var(--panel); border-left: 1px solid rgba(0,229,255,0.3); padding: 1rem; overflow-y: auto; backdrop-filter: blur(8px); }
+canvas { width: 100%; height: 100%; display: block; }
+
+.status-bar {
+  position: absolute; top: 0; left: 0; right: 0;
+  background: linear-gradient(90deg, #001a2e, #003344);
+  padding: 0.4rem 1rem; font-size: 0.75rem; letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--cyan); z-index: 10;
+}
+h1 { font-size: 1.1rem; color: var(--cyan); margin-bottom: 0.3rem; }
+h2 { font-size: 0.9rem; color: var(--gold); margin: 1rem 0 0.5rem; border-bottom: 1px solid rgba(255,215,0,0.3); }
+.boundary {
+  background: rgba(255,183,77,0.12); border-left: 3px solid var(--warn);
+  padding: 0.6rem; font-size: 0.78rem; margin: 0.6rem 0; border-radius: 4px;
+}
+button {
+  background: linear-gradient(135deg, #006688, #004466);
+  color: var(--cyan); border: 1px solid var(--cyan); padding: 0.5rem 0.8rem;
+  margin: 0.25rem 0.25rem 0.25rem 0; border-radius: 4px; cursor: pointer;
+  font-size: 0.8rem; transition: all 0.2s;
+}
+button:hover { background: #0088aa; color: white; box-shadow: 0 0 12px var(--cyan); }
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+.log {
+  background: #050a12; border: 1px solid rgba(0,229,255,0.2); height: 220px;
+  overflow-y: auto; font-family: monospace; font-size: 0.72rem; padding: 0.4rem;
+  border-radius: 4px; margin-top: 0.5rem;
+}
+.log .ok { color: var(--ok); }
+.log .warn { color: var(--warn); }
+.log .err { color: var(--err); }
+.metric { font-size: 0.8rem; margin: 0.3rem 0; }
+.strata-list { font-size: 0.75rem; list-style: none; }
+.strata-list li { padding: 0.15rem 0; opacity: 0.6; }
+.strata-list li.active { opacity: 1; color: var(--gold); }
+footer { font-size: 0.7rem; opacity: 0.6; margin-top: 1rem; text-align: center; }
