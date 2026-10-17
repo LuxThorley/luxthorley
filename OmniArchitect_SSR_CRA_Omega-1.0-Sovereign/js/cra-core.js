@@ -132,7 +132,13 @@ class CRAClient {
   // Three.js visual — nested strata shells + orbital particles
   // -----------------------------------------------------------------------
   initVisual() {
+    if (typeof THREE === "undefined") {
+      this.log("Three.js unavailable — visualiser offline. Core CRA engine remains fully operational.", "warn");
+      return;
+    }
     const container = document.getElementById("visual");
+    if (!container) return;
+    try {
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 100);
     this.camera.position.set(0, 4, 12);
@@ -185,9 +191,13 @@ class CRAClient {
 
     this.animate();
     this.updateStrataVisual();
+    } catch (err) {
+      this.log("Visualiser failed to initialise: " + err.message + " — core engine continues.", "err");
+    }
   }
 
   updateStrataVisual() {
+    if (!this.particles) return;
     // Clear old particles
     while (this.particles.children.length) this.particles.remove(this.particles.children[0]);
 
@@ -229,8 +239,10 @@ class CRAClient {
   }
 
   animate() {
+    if (!this.renderer) return;
     requestAnimationFrame(() => this.animate());
     const t = Date.now() * 0.001;
+    if (!this.shells) return;
     this.shells.forEach((s, i) => {
       s.rotation.y = t * (0.15 + i * 0.03);
       s.rotation.x = Math.sin(t * 0.2 + i) * 0.1;
