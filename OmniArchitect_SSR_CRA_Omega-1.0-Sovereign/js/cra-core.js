@@ -1,5 +1,5 @@
 /**
- * SSR–CRA Ω-1.0-Sovereign — Client Engine + Three.js Lattice Visualiser
+ * SSR–CRA v4.1 — Client Engine + Three.js Lattice Visualiser (finite-lattice reference implementation)
  * Extract-and-run: open index.html
  *
  * HONEST BOUNDARY: computational model of formal fixed-point architecture.
@@ -7,6 +7,7 @@
  */
 
 const STRATA = ["M0", "M1", "M2", "M3", "M4", "M5", "M6", "M7+"];
+const AXIOMS = ["source:Gamma_C", "constraint:monotonicity", "M0:primitive"];
 const STRATA_COLORS = [0x4488ff, 0x44aaff, 0x44ddff, 0x44ffcc, 0xffee44, 0xffaa44, 0xff7744, 0xff44aa];
 
 class CRAClient {
@@ -30,41 +31,34 @@ class CRAClient {
       atoms.add(s + ":observable");
     });
     ["constraint:CLAAL", "constraint:monotonicity", "constraint:recoverability",
-     "timeline:periodic", "act:indexical", "source:Gamma_C"].forEach(a => atoms.add(a));
+     "timeline:periodic", "act:indexical", "source:Gamma_C",
+     // admissible but never generated: shows μΓ_C is strictly below ⊤
+     "timeline:aperiodic", "act:non-indexical"].forEach(a => atoms.add(a));
     return atoms;
   }
 
+  full(Z, s) {
+    return Z.has(s + ":primitive") && Z.has(s + ":relation") && Z.has(s + ":observable");
+  }
+
+  // Γ_C(X) = Close(Advance(X ∪ A)) ∩ U — identical to python/cra_core.py demo_gamma (v4.1).
+  // Every rule is Horn-form, so Γ_C is monotone (see proof sketch in cra_core.py).
   gamma(X) {
     const g = new Set(X);
-    g.add("source:Gamma_C");
-    g.add("constraint:monotonicity");
-    g.add("M0:primitive");
-
-    // Advance one new primitive per application
+    AXIOMS.forEach(a => g.add(a));
+    // Advance EVERY eligible stratum (v4.0 advanced only the first, which broke monotonicity)
+    const adv = [];
     for (let i = 0; i < STRATA.length - 1; i++) {
-      const curr = STRATA[i];
-      const nxt = STRATA[i + 1];
-      if (g.has(curr + ":primitive") && g.has(curr + ":relation") && g.has(curr + ":observable") && !g.has(nxt + ":primitive")) {
-        g.add(nxt + ":primitive");
-        break;
-      }
+      if (this.full(g, STRATA[i])) adv.push(STRATA[i + 1] + ":primitive");
     }
-
-    // Close rel/obs for present primitives
-    STRATA.forEach(s => {
+    adv.forEach(a => g.add(a));
+    STRATA.forEach((s, i) => {
       if (g.has(s + ":primitive")) {
         g.add(s + ":relation");
         g.add(s + ":observable");
+        if (i > 0) g.add(STRATA[i - 1] + ":relation");
       }
     });
-
-    // Downward
-    for (let i = 1; i < STRATA.length; i++) {
-      if (g.has(STRATA[i] + ":primitive")) {
-        g.add(STRATA[i - 1] + ":relation");
-      }
-    }
-
     if ([...g].some(e => e.startsWith("M1:"))) {
       g.add("constraint:CLAAL");
       g.add("constraint:recoverability");
@@ -73,7 +67,32 @@ class CRAClient {
       g.add("act:indexical");
       g.add("timeline:periodic");
     }
-    return g;
+    return new Set([...g].filter(e => this.U.has(e)));
+  }
+
+  activeStrata(X) {
+    return new Set(STRATA.filter(s => [...X].some(e => e.startsWith(s + ":"))));
+  }
+
+  // CoherencePass: Act_n(r_{m,n}(x)) = q_{m,n}(Act_m(x)) for all n, as in cra_core.py
+  coherence(states) {
+    return states.every(x => STRATA.every((_, n) => {
+      const keep = new Set(STRATA.slice(0, n + 1));
+      const restricted = new Set([...x].filter(e => keep.has(e.split(":")[0])));
+      const lhs = this.activeStrata(restricted);
+      const rhs = new Set([...this.activeStrata(x)].filter(s => keep.has(s)));
+      return this.setsEqual(lhs, rhs);
+    }));
+  }
+
+  validate() {
+    const fp = this.current;
+    const fixed = this.setsEqual(this.gamma(fp), fp);
+    const inv = [...fp].every(e => this.U.has(e)) && [...AXIOMS].every(a => fp.has(a));
+    const coh = this.coherence([new Set(), fp, this.U]);
+    const valid = fixed && inv && coh;
+    this.log(`FixedPoint=${fixed} InvariantPass=${inv} CoherencePass=${coh} → VALID_RESULT (formal) = ${valid}`, valid ? "ok" : "err");
+    this.log(`|μΓ_C| = ${fp.size} of |U| = ${this.U.size}; not generated: ${[...this.U].filter(e => !fp.has(e)).join(", ")}`);
   }
 
   step() {
@@ -91,6 +110,7 @@ class CRAClient {
     if (same) {
       this.converged = true;
       this.log("μΓ_C reached. Γ_C(O) = O. Formal fixed point.", "ok");
+      this.validate();
       this.updateStrataVisual();
       return;
     }

@@ -1,4 +1,4 @@
-# Honest Boundary — SSR–CRA Ω-1.0-Sovereign
+# Honest Boundary — SSR–CRA v4.1 (finite-lattice reference implementation)
 
 ## Governing Engineering Notice
 
@@ -12,10 +12,11 @@ Their interpretation as enabling alternate timelines, higher-dimensional access,
 
 - Declares a finite universe U of formal structural elements.
 - Constructs L = P(U).
-- Applies a monotone operator Γ_C by iteration from the bottom element.
+- Applies a provably monotone demonstration operator Γ_C by iteration from the bottom element.
 - Detects the least fixed point when Γ_C(X) = X.
 - Applies ε-tolerant metric filters and coherence checks on declared maps.
-- Maintains an immutable audit ledger.
+- Reports VALID_RESULT only when FixedPoint ∧ InvariantPass ∧ CoherencePass hold.
+- Maintains an append-only audit ledger.
 - Provides a visual representation of strata activation.
 
 ## What this software does not do
