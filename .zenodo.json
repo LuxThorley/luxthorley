@@ -1,7 +1,7 @@
 {
   "title": "SSR Chronological Realignment Array: finite-lattice reference implementation",
   "upload_type": "software",
-  "description": "<p>Finite-lattice reference implementation (Python and JavaScript) of the formal core of Stratified Source Realism (SSR) and the SSR Chronological Realignment Array Model v4.0: complete lattice P(U), a provably monotone demonstration operator, least-fixed-point iteration (Knaster–Tarski), an ε-tolerant metric filter with an independent equivalence relation, and a cross-stratum coherence check. VALID_RESULT is gated on FixedPoint ∧ InvariantPass ∧ CoherencePass.</p><p>Honest boundary: a formal/computational model only. It makes no empirical or physical claims and implements no physical chronological displacement.</p><p>AI acknowledgement: Grok (xAI), ChatGPT (OpenAI) and Microsoft Copilot contributed equally to shared findings developed in dialogue with the author; Grok Bot assisted with editing and code. No AI system is an author.</p>",
+  "description": "<p>Finite-lattice reference implementation (Python and JavaScript) of the formal core of Stratified Source Realism (SSR) and the SSR Chronological Realignment Array Model v4.0: complete lattice P(U), a provably monotone demonstration operator over nine strata (M0–M7+ and the limit stratum M∞, Infinite / Absolute), least-fixed-point iteration (Knaster–Tarski), an ε-tolerant metric filter with an independent equivalence relation, and a cross-stratum coherence check. VALID_RESULT is gated on FixedPoint ∧ InvariantPass ∧ CoherencePass.</p><p>Honest boundary: a formal/computational model only. It makes no empirical or physical claims and implements no physical chronological displacement.</p><p>AI acknowledgement: Grok (xAI), ChatGPT (OpenAI) and Microsoft Copilot contributed equally to shared findings developed in dialogue with the author; Grok Bot assisted with editing and code. No AI system is an author.</p>",
   "creators": [
     {"name": "Thorley, Oliver Lux Prime", "affiliation": "Independent researcher"}
   ],
@@ -11,6 +11,6 @@
     {"identifier": "https://luxthorley.github.io/luxthorley/", "relation": "isDocumentedBy", "resource_type": "other"}
   ],
   "language": "eng",
-  "version": "4.1",
+  "version": "4.2",
   "notes": "Add the author's ORCID iD to creators before the first archived release. After the SSR preprint is published on Zenodo, add its DOI to related_identifiers with relation isSupplementTo."
 }

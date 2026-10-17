@@ -1,4 +1,4 @@
-# Honest Boundary — SSR–CRA v4.1 (finite-lattice reference implementation)
+# Honest Boundary — SSR–CRA v4.2 (finite-lattice reference implementation)
 
 ## Governing Engineering Notice
 
@@ -18,6 +18,7 @@ Their interpretation as enabling alternate timelines, higher-dimensional access,
 - Reports VALID_RESULT only when FixedPoint ∧ InvariantPass ∧ CoherencePass hold.
 - Maintains an append-only audit ledger.
 - Provides a visual representation of strata activation.
+- Labels the completed fixed point with the limit stratum M∞ (Infinite / Absolute). M∞ is a formal name for "the iteration is complete"; it is not an actual infinity and makes no empirical claim.
 
 ## What this software does not do
 

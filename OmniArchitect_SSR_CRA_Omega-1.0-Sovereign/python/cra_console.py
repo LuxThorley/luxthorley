@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-SSR–CRA Console v4.1 — operational runtime checklist (CRA Model v4.0 §5) as a script.
+SSR–CRA Console v4.2 — operational runtime checklist (CRA Model v4.0 §5) as a script.
 Finite-lattice reference implementation. Run: python3 cra_console.py
 """
 
@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from cra_core import (
     LatticeDomain, CRAEngine, demo_universe, demo_gamma, demo_feature_map, euclidean,
     strata_equivalent, demo_coherence, AXIOMS, STRATA, STRATA_LABELS,
-    DEMO_EPSILON, MAX_DISTANCE,
+    DEMO_EPSILON, MAX_DISTANCE, TOTALITY,
 )
 
 CYAN, GOLD, GREEN, RED, RESET, BOLD = "\033[96m", "\033[93m", "\033[92m", "\033[91m", "\033[0m", "\033[1m"
@@ -20,7 +20,7 @@ def ok(b):
     return f"{GREEN}PASS{RESET}" if b else f"{RED}FAIL{RESET}"
 
 def banner():
-    print(f"{CYAN}{BOLD}  SSR CHRONOLOGICAL REALIGNMENT ARRAY — CONSOLE v4.1")
+    print(f"{CYAN}{BOLD}  SSR CHRONOLOGICAL REALIGNMENT ARRAY — CONSOLE v4.2")
     print(f"  Finite-lattice reference implementation of CRA Model v4.0{RESET}")
     print(f"{GOLD}HONEST BOUNDARY:{RESET} formal/computational model only.")
     print("  No validated physical mechanism for timeline displacement exists.\n")
@@ -31,7 +31,7 @@ def stage_i(engine):
     print("  I-02 Lattice L = P(U) under ⊆")
     print("  I-03 Zero-point X₀ = ∅")
     print("  I-04 Operator Γ_C registered (demo_gamma)")
-    print("       Strata:", "; ".join(f"{s} {STRATA_LABELS[s]}" for s in STRATA))
+    print(f"       Strata ({len(STRATA)}):", "; ".join(f"{s} {STRATA_LABELS[s]}" for s in STRATA))
     mono = engine.verify_monotonicity()
     print(f"  I-05 Monotonicity (20,000 deterministic samples): {ok(mono)}")
     if not mono:
@@ -53,6 +53,7 @@ def stage_iii(engine):
     coh = demo_coherence(engine, tests)
     print(f"  Converged in {iters} iterations; |μΓ_C| = {len(fp)} of |U| = {len(engine.domain.U)}")
     print("  Not generated:", sorted(engine.domain.U - fp))
+    print(f"  M∞ limit stratum reached ({TOTALITY} ∈ μΓ_C): {ok(TOTALITY in fp)}")
     print(f"  III-04 FixedPoint Γ_C(O) = O : {ok(fixed)}")
     print(f"  III-05 InvariantPass         : {ok(inv)}")
     print(f"  III-06 CoherencePass ({len(tests)} states × {len(STRATA)} levels): {ok(coh)}")

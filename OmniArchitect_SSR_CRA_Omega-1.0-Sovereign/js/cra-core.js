@@ -1,14 +1,20 @@
 /**
- * SSR–CRA v4.1 — Client Engine + Three.js Lattice Visualiser (finite-lattice reference implementation)
+ * SSR–CRA v4.2 — Client Engine + Three.js Lattice Visualiser (finite-lattice reference implementation)
  * Extract-and-run: open index.html
  *
  * HONEST BOUNDARY: computational model of formal fixed-point architecture.
  * Not a physical time machine.
  */
 
-const STRATA = ["M0", "M1", "M2", "M3", "M4", "M5", "M6", "M7+"];
+// Nine strata: eight finite strata M0–M7+ plus the limit stratum M∞ (Infinite / Absolute), v4.2.
+// M∞ is the stratum at which the iteration is complete, identified with O = μΓ_C itself.
+// It has one atom, M∞:totality, generated exactly when all 24 atoms of M0–M7+ are present.
+const FINITE_STRATA = ["M0", "M1", "M2", "M3", "M4", "M5", "M6", "M7+"];
+const LIMIT_STRATUM = "M∞";
+const TOTALITY = "M∞:totality";
+const STRATA = FINITE_STRATA.concat([LIMIT_STRATUM]);
 const AXIOMS = ["source:Gamma_C", "constraint:monotonicity", "M0:primitive"];
-const STRATA_COLORS = [0x4488ff, 0x44aaff, 0x44ddff, 0x44ffcc, 0xffee44, 0xffaa44, 0xff7744, 0xff44aa];
+const STRATA_COLORS = [0x4488ff, 0x44aaff, 0x44ddff, 0x44ffcc, 0xffee44, 0xffaa44, 0xff7744, 0xff44aa, 0xffd700];
 
 class CRAClient {
   constructor() {
@@ -25,11 +31,12 @@ class CRAClient {
 
   buildUniverse() {
     const atoms = new Set();
-    STRATA.forEach(s => {
+    FINITE_STRATA.forEach(s => {
       atoms.add(s + ":primitive");
       atoms.add(s + ":relation");
       atoms.add(s + ":observable");
     });
+    atoms.add(TOTALITY);
     ["constraint:CLAAL", "constraint:monotonicity", "constraint:recoverability",
      "timeline:periodic", "act:indexical", "source:Gamma_C",
      // admissible but never generated: shows μΓ_C is strictly below ⊤
@@ -38,25 +45,28 @@ class CRAClient {
   }
 
   full(Z, s) {
+    if (s === LIMIT_STRATUM) return Z.has(TOTALITY);
     return Z.has(s + ":primitive") && Z.has(s + ":relation") && Z.has(s + ":observable");
   }
 
-  // Γ_C(X) = Close(Advance(X ∪ A)) ∩ U — identical to python/cra_core.py demo_gamma (v4.1).
+  // Γ_C(X) = Close(Advance(X ∪ A)) ∩ U — identical to python/cra_core.py demo_gamma (v4.2).
   // Every rule is Horn-form, so Γ_C is monotone (see proof sketch in cra_core.py).
   gamma(X) {
     const g = new Set(X);
     AXIOMS.forEach(a => g.add(a));
     // Advance EVERY eligible stratum (v4.0 advanced only the first, which broke monotonicity)
     const adv = [];
-    for (let i = 0; i < STRATA.length - 1; i++) {
-      if (this.full(g, STRATA[i])) adv.push(STRATA[i + 1] + ":primitive");
+    for (let i = 0; i < FINITE_STRATA.length - 1; i++) {
+      if (this.full(g, FINITE_STRATA[i])) adv.push(FINITE_STRATA[i + 1] + ":primitive");
     }
+    // Limit rule (v4.2, Horn form): all 24 atoms of M0–M7+ present ⇒ add M∞:totality
+    if (FINITE_STRATA.every(s => this.full(g, s))) adv.push(TOTALITY);
     adv.forEach(a => g.add(a));
-    STRATA.forEach((s, i) => {
+    FINITE_STRATA.forEach((s, i) => {
       if (g.has(s + ":primitive")) {
         g.add(s + ":relation");
         g.add(s + ":observable");
-        if (i > 0) g.add(STRATA[i - 1] + ":relation");
+        if (i > 0) g.add(FINITE_STRATA[i - 1] + ":relation");
       }
     });
     if ([...g].some(e => e.startsWith("M1:"))) {
@@ -92,6 +102,7 @@ class CRAClient {
     const coh = this.coherence([new Set(), fp, this.U]);
     const valid = fixed && inv && coh;
     this.log(`FixedPoint=${fixed} InvariantPass=${inv} CoherencePass=${coh} → VALID_RESULT (formal) = ${valid}`, valid ? "ok" : "err");
+    this.log(`M∞ (Infinite / Absolute) reached: ${fp.has(TOTALITY)} — the iteration is complete; O = μΓ_C.`, fp.has(TOTALITY) ? "ok" : "err");
     this.log(`|μΓ_C| = ${fp.size} of |U| = ${this.U.size}; not generated: ${[...this.U].filter(e => !fp.has(e)).join(", ")}`);
   }
 
