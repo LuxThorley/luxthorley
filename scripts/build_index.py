@@ -46,7 +46,7 @@ def load_catalogue():
 def walk():
     out = []
     for d, dirs, files in os.walk(ROOT):
-        dirs[:] = sorted(x for x in dirs if x != ".git")
+        dirs[:] = sorted(x for x in dirs if x not in (".git", "__pycache__", "node_modules"))
         for name in files:
             rel = os.path.relpath(os.path.join(d, name), ROOT).replace(os.sep, "/")
             out.append(rel)
