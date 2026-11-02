@@ -1,16 +1,56 @@
 {
   "_help": "Optional metadata for the README catalogue. Keys under 'files' are repo-relative paths. Any file not listed here is still indexed automatically (title from PDF metadata or filename, category from its folder). Edit this file, then run: python3 scripts/build_index.py (the GitHub Action also does this on every push).",
   "categories": [
-    {"id": "ssr", "title": "Stratified Source Realism & OmniGenesis", "description": "Papers, editions and explainers of Stratified Source Realism (SSR) by Oliver Lux Prime Thorley."},
-    {"id": "software", "title": "OmniGenesis reference implementation (SSR-CRA, GitHub Pages site)", "description": "Source of the live site at https://luxthorley.github.io/luxthorley/ ."},
-    {"id": "oracles", "title": "Mystic52 Tarot, Oracles & Codices", "description": "Tarot, oracle and codex works by Oliver Lux Prime Thorley."},
-    {"id": "energy", "title": "Energy & Technology", "description": "Technical theses."},
-    {"id": "divination", "title": "Library: Divination & Augury (public domain)", "description": "Source texts on Roman and Etruscan divination."},
-    {"id": "classics", "title": "Library: Greek & Roman Classics (public domain)", "description": "Ancient authors in public-domain editions and translations."},
-    {"id": "esoterica", "title": "Library: Hermetic, Occult & Neoplatonic Texts (public domain)", "description": "Public-domain esoteric and philosophical texts."},
-    {"id": "manuscripts", "title": "Library: Manuscripts & Facsimiles", "description": "Reproductions of historic manuscripts."},
-    {"id": "data", "title": "Data", "description": "Datasets and spreadsheets."},
-    {"id": "repo", "title": "Repository files", "description": "Configuration, scripts and metadata that keep this repository running."}
+    {
+      "id": "ssr",
+      "title": "Stratified Source Realism & OmniGenesis",
+      "description": "Papers, editions and explainers of Stratified Source Realism (SSR) by Oliver Lux Prime Thorley."
+    },
+    {
+      "id": "software",
+      "title": "OmniGenesis reference implementation (SSR-CRA, GitHub Pages site)",
+      "description": "Source of the live site at https://luxthorley.github.io/luxthorley/ ."
+    },
+    {
+      "id": "oracles",
+      "title": "Mystic52 Tarot, Oracles & Codices",
+      "description": "Tarot, oracle and codex works by Oliver Lux Prime Thorley."
+    },
+    {
+      "id": "energy",
+      "title": "Energy & Technology",
+      "description": "Technical theses."
+    },
+    {
+      "id": "divination",
+      "title": "Library: Divination & Augury (public domain)",
+      "description": "Source texts on Roman and Etruscan divination."
+    },
+    {
+      "id": "classics",
+      "title": "Library: Greek & Roman Classics (public domain)",
+      "description": "Ancient authors in public-domain editions and translations."
+    },
+    {
+      "id": "esoterica",
+      "title": "Library: Hermetic, Occult & Neoplatonic Texts (public domain)",
+      "description": "Public-domain esoteric and philosophical texts."
+    },
+    {
+      "id": "manuscripts",
+      "title": "Library: Manuscripts & Facsimiles",
+      "description": "Reproductions of historic manuscripts."
+    },
+    {
+      "id": "data",
+      "title": "Data",
+      "description": "Datasets and spreadsheets."
+    },
+    {
+      "id": "repo",
+      "title": "Repository files",
+      "description": "Configuration, scripts and metadata that keep this repository running."
+    }
   ],
   "folder_categories": {
     "OmniArchitect_SSR_CRA_Omega-1.0-Sovereign": "software",
@@ -24,32 +64,181 @@
     "catalogue.json": "repo",
     ".zenodo.json": "repo"
   },
-  "pages": {"folder": "OmniArchitect_SSR_CRA_Omega-1.0-Sovereign", "url": "https://luxthorley.github.io/luxthorley/"},
-  "exclude": ["README.md"],
+  "pages": {
+    "folder": "OmniArchitect_SSR_CRA_Omega-1.0-Sovereign",
+    "url": "https://luxthorley.github.io/luxthorley/"
+  },
+  "exclude": [
+    "README.md"
+  ],
   "files": {
-    "Stratified_Source_Realism_Final_Competition_Essay.pdf": {"title": "Stratified Source Realism: Final Competition Essay", "author": "Oliver Lux Prime Thorley (with Grok, xAI)", "date": "2026-10-15", "category": "ssr", "description": "AI Philosophy Competition essay: the Omniverse as the least fixed point of hierarchically and periodically constrained closure."},
-    "Stratified_Source_Realism_ULTIMATE_Public_Edition.pdf": {"title": "Stratified Source Realism — Ultimate Public Edition", "author": "Oliver Lux Prime Thorley", "date": "2026-10-15", "category": "ssr", "description": "Unified metaphysical statement, formal core and illustrated guide."},
-    "SSR_OmniGenesis_Definitive_Integration.pdf": {"title": "Stratified Source Realism and OmniGenesis — Definitive Integration", "author": "Oliver Lux Prime Thorley", "date": "2026-10-16", "category": "ssr", "description": "Integration of the SSR metaphysical architecture with the OmniGenesis computational realisation."},
-    "SSR_Plain_English_Explainer.pdf": {"title": "Stratified Source Realism — A Plain-English Guide", "author": "Oliver Lux Prime Thorley", "date": "2026-10-17", "category": "ssr", "description": "Three-page plain-English guide to the v4.0 preprint (DOI 10.5281/zenodo.23439073)."},
-    "SSR_Chronological_Realignment_Array_Model_v4.pdf": {"title": "SSR Model 4.0 — Chronological Realignment Array", "author": "Oliver Lux Prime Thorley", "date": "2026-10", "category": "ssr", "description": "Conceptual engineering manual: least-fixed-point chronological realignment array (formal model only)."},
-    "Mystic52_Tarot_Omega_Compendium.pdf": {"title": "Mystic52 Tarot — Omega Compendium", "author": "Oliver Lux Prime Thorley", "date": "2026-10-03", "category": "oracles"},
-    "Mystic52_Tarot_Ultimate_Compendium.pdf": {"title": "Mystic52 Tarot — Ultimate Compendium", "author": "Oliver Lux Prime Thorley", "date": "2026-10-06", "category": "oracles", "description": "Omega lattice reconciled with the Amalgam wells."},
-    "Mystic52_Tarot_Poker_Oracle.pdf": {"title": "Mystic52 Tarot — The Table Oracle (Poker Oracle)", "author": "Oliver Lux Prime Thorley", "date": "2026-10-06", "category": "oracles", "description": "Hold · Fold · Walk · Run."},
-    "HSMOS_Ultimate_Codex_Speaking_Fields_2025-2026.pdf": {"title": "HSMOS Ultimate Codex — The Speaking Fields 2025–2026", "author": "OmniNexus Sovereign Codex (Oliver Lux Prime Thorley)", "date": "2026-10-09", "category": "oracles", "description": "Harmonic Sovereign Multidimensional Operating System codex, definitive edition."},
-    "Minimal_Resource_Energy_Thesis.pdf": {"title": "Minimal-Resource Electricity: Limits, Physics and Practice", "author": "Oliver Lux Prime Thorley", "date": "2026-10-19", "category": "energy", "description": "Factual, mathematical and schematic thesis on near-'unlimited' electricity from minimal resources."},
-    "OmniArchitect_SSR_CRA_Omega-1.0-Sovereign/index.html": {"title": "SSR-CRA Ω-1.0 live site (index.html)", "category": "software"},
-    "library/divination/1878-1906-regell-thulin-roman-augury-and-etruscan-divination.pdf": {"title": "Roman Augury and Etruscan Divination (Regell, Fragmenta auguralia; De augurum publicorum libris; Thulin, Scriptorum disciplinae Etruscae fragmenta)", "author": "Paul Regell; Carl Thulin", "date": "1878–1906", "category": "divination", "description": "Latin source collections, Arno Press facsimile reprint (1975). Source text for the Roman & Etruscan divination manual.", "licence": "Public domain (19th/early-20th-c. texts; facsimile reprint)"},
-    "library/classics/1897-heath-the-works-of-archimedes.pdf": {"title": "The Works of Archimedes", "author": "Archimedes; ed. T. L. Heath", "date": "1897", "category": "classics", "licence": "Public domain"},
-    "library/classics/1916-theophrastus-enquiry-into-plants-vol-1-hort-loeb.pdf": {"title": "Enquiry into Plants, vol. I (and minor works on odours and weather signs)", "author": "Theophrastus; trans. Sir Arthur Hort (Loeb)", "date": "1916", "category": "classics", "licence": "Public domain"},
-    "library/classics/1922-xenophon-anabasis-brownson-loeb.pdf": {"title": "Anabasis, Books I–VII (Xenophon vol. III, Loeb)", "author": "Xenophon; trans. Carleton L. Brownson", "date": "1922", "category": "classics", "description": "1980 reprint of the 1922 Loeb translation.", "licence": "Public domain in the US (first published 1922)"},
-    "library/classics/1931-tacitus-histories-iv-v-annals-i-iii-moore-jackson-loeb-vol-2.pdf": {"title": "Tacitus II: Histories IV–V, Annals I–III (Loeb)", "author": "Tacitus; trans. C. H. Moore and J. Jackson", "date": "1931", "category": "classics", "licence": "Public domain in the US (copyright not renewed; see LacusCurtius)"},
-    "library/esoterica/1823-taylor-select-works-of-porphyry.pdf": {"title": "Select Works of Porphyry", "author": "Porphyry; trans. Thomas Taylor", "date": "1823", "category": "esoterica", "licence": "Public domain (Google Books scan)"},
-    "library/esoterica/1886-levi-the-mysteries-of-magic-waite.pdf": {"title": "The Mysteries of Magic: A Digest of the Writings of Éliphas Lévi", "author": "Éliphas Lévi; ed. Arthur Edward Waite", "date": "1886", "category": "esoterica", "licence": "Public domain (Google Books scan)"},
-    "library/esoterica/1896-levi-transcendental-magic-waite.pdf": {"title": "Transcendental Magic: Its Doctrine and Ritual", "author": "Éliphas Lévi; trans. Arthur Edward Waite", "date": "1896", "category": "esoterica", "licence": "Public domain"},
-    "library/esoterica/1906-crowley-the-works-of-aleister-crowley-vol-2.pdf": {"title": "The Works of Aleister Crowley, vol. II", "author": "Aleister Crowley", "date": "1906", "category": "esoterica", "licence": "Public domain"},
-    "library/esoterica/1907-crowley-the-works-of-aleister-crowley-vol-3.pdf": {"title": "The Works of Aleister Crowley, vol. III", "author": "Aleister Crowley", "date": "1907", "category": "esoterica", "licence": "Public domain"},
-    "library/esoterica/1908-three-initiates-the-kybalion.pdf": {"title": "The Kybalion: A Study of the Hermetic Philosophy of Ancient Egypt and Greece", "author": "Three Initiates", "date": "1908", "category": "esoterica", "licence": "Public domain"},
-    "library/manuscripts/leonardo-da-vinci-codex-atlanticus-facsimile.pdf": {"title": "Codex Atlanticus (folio images)", "author": "Leonardo da Vinci", "date": "c. 1478–1519", "category": "manuscripts", "description": "435 pages of folio reproductions (carries a provider watermark).", "licence": "Public-domain artwork; faithful reproduction"},
-    "data/paleoclimate/2014-rasmussen-intimate-greenland-ice-core-event-stratigraphy.xlsx": {"title": "INTIMATE event stratigraphy: Greenland ice-core event ages and NGRIP depths (Table 2)", "author": "S. O. Rasmussen et al.", "date": "2014", "category": "data", "description": "From Rasmussen et al. (2014), Quaternary Science Reviews 106, doi:10.1016/j.quascirev.2014.09.007. Cite the paper when using."}
+    "Stratified_Source_Realism_Final_Competition_Essay.pdf": {
+      "title": "Stratified Source Realism: Final Competition Essay",
+      "author": "Oliver Lux Prime Thorley (with Grok, xAI)",
+      "date": "2026-10-15",
+      "category": "ssr",
+      "description": "AI Philosophy Competition essay: the Omniverse as the least fixed point of hierarchically and periodically constrained closure."
+    },
+    "Stratified_Source_Realism_ULTIMATE_Public_Edition.pdf": {
+      "title": "Stratified Source Realism — Ultimate Public Edition",
+      "author": "Oliver Lux Prime Thorley",
+      "date": "2026-10-15",
+      "category": "ssr",
+      "description": "Unified metaphysical statement, formal core and illustrated guide."
+    },
+    "SSR_OmniGenesis_Definitive_Integration.pdf": {
+      "title": "Stratified Source Realism and OmniGenesis — Definitive Integration",
+      "author": "Oliver Lux Prime Thorley",
+      "date": "2026-10-16",
+      "category": "ssr",
+      "description": "Integration of the SSR metaphysical architecture with the OmniGenesis computational realisation."
+    },
+    "SSR_Plain_English_Explainer.pdf": {
+      "title": "Stratified Source Realism — A Plain-English Guide",
+      "author": "Oliver Lux Prime Thorley",
+      "date": "2026-10-17",
+      "category": "ssr",
+      "description": "Three-page plain-English guide to the v4.0 preprint (DOI 10.5281/zenodo.23439073)."
+    },
+    "SSR_Chronological_Realignment_Array_Model_v4.pdf": {
+      "title": "SSR Model 4.0 — Chronological Realignment Array",
+      "author": "Oliver Lux Prime Thorley",
+      "date": "2026-10",
+      "category": "ssr",
+      "description": "Conceptual engineering manual: least-fixed-point chronological realignment array (formal model only)."
+    },
+    "Mystic52_Tarot_Omega_Compendium.pdf": {
+      "title": "Mystic52 Tarot — Omega Compendium",
+      "author": "Oliver Lux Prime Thorley",
+      "date": "2026-10-03",
+      "category": "oracles"
+    },
+    "Mystic52_Tarot_Ultimate_Compendium.pdf": {
+      "title": "Mystic52 Tarot — Ultimate Compendium",
+      "author": "Oliver Lux Prime Thorley",
+      "date": "2026-10-06",
+      "category": "oracles",
+      "description": "Omega lattice reconciled with the Amalgam wells."
+    },
+    "Mystic52_Tarot_Poker_Oracle.pdf": {
+      "title": "Mystic52 Tarot — The Table Oracle (Poker Oracle)",
+      "author": "Oliver Lux Prime Thorley",
+      "date": "2026-10-06",
+      "category": "oracles",
+      "description": "Hold · Fold · Walk · Run."
+    },
+    "HSMOS_Ultimate_Codex_Speaking_Fields_2025-2026.pdf": {
+      "title": "HSMOS Ultimate Codex — The Speaking Fields 2025–2026",
+      "author": "OmniNexus Sovereign Codex (Oliver Lux Prime Thorley)",
+      "date": "2026-10-09",
+      "category": "oracles",
+      "description": "Harmonic Sovereign Multidimensional Operating System codex, definitive edition."
+    },
+    "Minimal_Resource_Energy_Thesis.pdf": {
+      "title": "Minimal-Resource Electricity: Limits, Physics and Practice",
+      "author": "Oliver Lux Prime Thorley",
+      "date": "2026-10-19",
+      "category": "energy",
+      "description": "Factual, mathematical and schematic thesis on near-'unlimited' electricity from minimal resources."
+    },
+    "OmniArchitect_SSR_CRA_Omega-1.0-Sovereign/index.html": {
+      "title": "SSR-CRA Ω-1.0 live site (index.html)",
+      "category": "software"
+    },
+    "library/divination/1878-1906-regell-thulin-roman-augury-and-etruscan-divination.pdf": {
+      "title": "Roman Augury and Etruscan Divination (Regell, Fragmenta auguralia; De augurum publicorum libris; Thulin, Scriptorum disciplinae Etruscae fragmenta)",
+      "author": "Paul Regell; Carl Thulin",
+      "date": "1878–1906",
+      "category": "divination",
+      "description": "Latin source collections, Arno Press facsimile reprint (1975). Source text for the Roman & Etruscan divination manual.",
+      "licence": "Public domain (19th/early-20th-c. texts; facsimile reprint)"
+    },
+    "library/classics/1897-heath-the-works-of-archimedes.pdf": {
+      "title": "The Works of Archimedes",
+      "author": "Archimedes; ed. T. L. Heath",
+      "date": "1897",
+      "category": "classics",
+      "licence": "Public domain",
+      "description": "Heath's edition of the extant works in modern notation (Cambridge University Press)."
+    },
+    "library/classics/1916-theophrastus-enquiry-into-plants-vol-1-hort-loeb.pdf": {
+      "title": "Enquiry into Plants, vol. I (and minor works on odours and weather signs)",
+      "author": "Theophrastus; trans. Sir Arthur Hort (Loeb)",
+      "date": "1916",
+      "category": "classics",
+      "licence": "Public domain"
+    },
+    "library/classics/1922-xenophon-anabasis-brownson-loeb.pdf": {
+      "title": "Anabasis, Books I–VII (Xenophon vol. III, Loeb)",
+      "author": "Xenophon; trans. Carleton L. Brownson",
+      "date": "1922",
+      "category": "classics",
+      "description": "1980 reprint of the 1922 Loeb translation.",
+      "licence": "Public domain in the US (first published 1922)"
+    },
+    "library/classics/1931-tacitus-histories-iv-v-annals-i-iii-moore-jackson-loeb-vol-2.pdf": {
+      "title": "Tacitus II: Histories IV–V, Annals I–III (Loeb)",
+      "author": "Tacitus; trans. C. H. Moore and J. Jackson",
+      "date": "1931",
+      "category": "classics",
+      "licence": "Public domain in the US (copyright not renewed; see LacusCurtius)"
+    },
+    "library/esoterica/1823-taylor-select-works-of-porphyry.pdf": {
+      "title": "Select Works of Porphyry",
+      "author": "Porphyry; trans. Thomas Taylor",
+      "date": "1823",
+      "category": "esoterica",
+      "licence": "Public domain (Google Books scan)"
+    },
+    "library/esoterica/1886-levi-the-mysteries-of-magic-waite.pdf": {
+      "title": "The Mysteries of Magic: A Digest of the Writings of Éliphas Lévi",
+      "author": "Éliphas Lévi; ed. Arthur Edward Waite",
+      "date": "1886",
+      "category": "esoterica",
+      "licence": "Public domain (Google Books scan)"
+    },
+    "library/esoterica/1896-levi-transcendental-magic-waite.pdf": {
+      "title": "Transcendental Magic: Its Doctrine and Ritual",
+      "author": "Éliphas Lévi; trans. Arthur Edward Waite",
+      "date": "1896",
+      "category": "esoterica",
+      "licence": "Public domain"
+    },
+    "library/esoterica/1906-crowley-the-works-of-aleister-crowley-vol-2.pdf": {
+      "title": "The Works of Aleister Crowley, vol. II",
+      "author": "Aleister Crowley",
+      "date": "1906",
+      "category": "esoterica",
+      "licence": "Public domain"
+    },
+    "library/esoterica/1907-crowley-the-works-of-aleister-crowley-vol-3.pdf": {
+      "title": "The Works of Aleister Crowley, vol. III",
+      "author": "Aleister Crowley",
+      "date": "1907",
+      "category": "esoterica",
+      "licence": "Public domain"
+    },
+    "library/esoterica/1908-three-initiates-the-kybalion.pdf": {
+      "title": "The Kybalion: A Study of the Hermetic Philosophy of Ancient Egypt and Greece",
+      "author": "Three Initiates",
+      "date": "1908",
+      "category": "esoterica",
+      "licence": "Public domain"
+    },
+    "library/manuscripts/leonardo-da-vinci-codex-atlanticus-facsimile.pdf": {
+      "title": "Codex Atlanticus (folio images)",
+      "author": "Leonardo da Vinci",
+      "date": "c. 1478–1519",
+      "category": "manuscripts",
+      "description": "435 pages of folio reproductions (carries a provider watermark).",
+      "licence": "Public-domain artwork; faithful reproduction"
+    },
+    "data/paleoclimate/2014-rasmussen-intimate-greenland-ice-core-event-stratigraphy.xlsx": {
+      "title": "INTIMATE event stratigraphy: Greenland ice-core event ages and NGRIP depths (Table 2)",
+      "author": "S. O. Rasmussen et al.",
+      "date": "2014",
+      "category": "data",
+      "description": "From Rasmussen et al. (2014), Quaternary Science Reviews 106, doi:10.1016/j.quascirev.2014.09.007. Cite the paper when using."
+    }
   }
 }
